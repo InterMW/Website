@@ -10,9 +10,9 @@ class App extends Component {
             <HashRouter>
             <div className="App">
                 <ul className="navigate" >
-                <li className="navitem"><NavLink to="/">Home</NavLink> </li>
-                <li className="navitem"><NavLink to="/about">About</NavLink> </li>
-                <li className="navitem navright"><NavLink to="/log">Log in</NavLink> </li>
+                    <NavLink className="navitem" to="/">Home</NavLink> 
+                    <NavLink className="navitem" to="/about" >About</NavLink> 
+                    <NavLink className="navitem navright" to="/log">Log in</NavLink> 
                 </ul>
                 <div className="content">
                     <Routes>

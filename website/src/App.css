@@ -23,6 +23,7 @@ li {
   background-color: #111;
 }
 .navitem {
+  float: left;
   display: block;
   color: white;
   text-align: center;
