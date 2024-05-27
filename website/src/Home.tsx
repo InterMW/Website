@@ -4,8 +4,11 @@ class Home extends Component {
     render() {
         return (
             <div>
-                <h3>SPA App - Home</h3>
-                <p>This website is underconstruction.  Please come back later!</p>
+                <h3>Home</h3>
+
+                <iframe src="http://plane.centurionx.net" ></iframe>
+
+
             </div>
         )
     }
