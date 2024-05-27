@@ -34,12 +34,12 @@ jobs:
     env:
       TAG: interwebsite
     steps:
-     - name: Docker Login
-       uses: docker/login-action@v3.0.0
+     - name: SSH Command
+    # uses: nekiro/ssh-job@e0d177751aced5bcaf110ce4d782a681e5e12856
+       uses: nekiro/ssh-job@v1.0.5
        with:
+        run: docker pull ${{secrets.DOCKER_HOST}}/${{env.TAG}}; docker stop ${{env.TAG}}; docker rm ${{env.TAG}}; docker run --name ${{env.TAG}} --restart=unless-stopped -m=250m  -e 80:8109 -d ${{secrets.DOCKER_HOST}}/${{env.TAG}}; 
         registry: ${{secrets.CLOUD_HOST}}
         username: ${{secrets.CLOUD_USERNAME}}
-        password: ${{secrets.CLOUD_PASSWORD}}      
-     - name: deploy
+        password: ${{secrets.CLOUD_PASSWORD}}    
     # uses: nekiro/ssh-job@e0d177751aced5bcaf110ce4d782a681e5e12856
-       run: docker pull ${{secrets.DOCKER_HOST}}/${{env.TAG}}; docker stop ${{env.TAG}}; docker rm ${{env.TAG}}; docker run --name ${{env.TAG}} --restart=unless-stopped -m=250m  -e 80:8109 -d ${{secrets.DOCKER_HOST}}/${{env.TAG}}; 
