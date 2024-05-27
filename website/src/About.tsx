@@ -5,12 +5,8 @@ class About extends Component {
         return (
             <div>
                 <h3>Who am I?</h3>
-                <p>  Hello, my name is Joseph Melberg.  I am a software developer by trade and hobby.  
-                </p>
+                <p>  Hello, my name is Joseph Melberg.  I am a software developer by trade and hobby.</p>
 
-                <p>
-                    Thus, the plane project was born. 
-                </p>
             </div>
         )
     }

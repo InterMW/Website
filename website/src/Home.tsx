@@ -5,10 +5,7 @@ class Home extends Component {
         return (
             <div>
                 <h3>Home</h3>
-
-                <iframe src="http://plane.centurionx.net" ></iframe>
-
-
+                <p>The plane display is not yet ready, please go to <a href="http://plane.centurionx.net">http://plane.centurionx.net</a> for the current data</p>
             </div>
         )
     }
