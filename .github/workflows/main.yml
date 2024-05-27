@@ -30,9 +30,9 @@ jobs:
           ${{secrets.DOCKER_HOST}}/${{env.TAG}}
   deploy:
     needs: build-publish
-    runs-on: cloud
+    runs-on: ubuntu-latest
     env:
-      TAG: ubuntu-latest
+      TAG: interwebsite
     steps:
      - name: Docker Login
        uses: docker/login-action@v3.0.0
