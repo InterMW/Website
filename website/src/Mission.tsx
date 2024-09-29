@@ -23,7 +23,7 @@ class Mission extends Component {
 
                     I had the idea that maybe I could show her where the planes are
                     in the sky.  I bought a little software defined radio usb
-                    stick, downloaded (Put a link to dump-1090) the repo,
+                    stick, downloaded the repo,
 
                     followed the documentation, ran the code, got her to look and
                     she didn't care in the slightest.
