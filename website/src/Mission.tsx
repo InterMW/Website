@@ -25,7 +25,7 @@ class Mission extends Component {
                     in the sky.  I bought a little software defined radio usb
                     stick, downloaded the repo,
 
-                    followed the documentation, ran the code, got her to look and
+                    followed the documentation, ran the code, got her to look, and
                     she didn't care in the slightest.
                     However, I had just graduated from college and had my first
                     full-time, non-intern job.  I needed something to do.
