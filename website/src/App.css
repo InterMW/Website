@@ -15,9 +15,7 @@
   overflow: hidden;
   background-color: #333;
 }
-li {
-    float:left;
-}
+
 .navitem:hover:not(.active) {
   background-color: #111;
 }
