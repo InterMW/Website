@@ -29,15 +29,56 @@ function Page() {
     };
     const [deviceList, setDeviceList] = useState([empy]);
 
+    async function restart(serialNumber : string){
+            var key = localStorage.getItem("key");
+            if (key == "")
+            {
+                console.warn("no key");
+                return;
+            }
+            const myHeaders = new Headers();
+            myHeaders.append("token", key!);
+            myHeaders.append("Content-Type", "application/json");
+
+            
+            const response = await fetch("http://localhost:5000/device/restart/"+ serialNumber, {
+              method: "POST",
+              headers: myHeaders,
+            });
+
+    }
+
 
 
     useEffect(() => {
         async function startFetching() {
-            var result = await axios.get('https://api.centurionx.net/device/list');
+            var key = localStorage.getItem("key");
+            if (key == "")
+            {
+                console.warn("no key");
+                return;
+            }
+            const myHeaders = new Headers();
+            myHeaders.append("token", key!);
+            myHeaders.append("Content-Type", "application/json");
 
-            console.log(result.data);
+            
+            const response = await fetch("https://api.centurionx.net/device/list", {
+              method: "GET",
+              headers: myHeaders,
+            });
+
+
+            console.log(response);
+            var res = await response.json();
+
+            console.log(res);
+            //var result = await axios.get('https://api.centurionx.net/device/list');
+            
+
+            //console.log(result.data);
             if (!ignore) {
-                setDeviceList(result.data);
+                setDeviceList(res);
                 // setDeviceList(['a','b','c']);
             }
         }
@@ -56,7 +97,8 @@ function Page() {
                     return <tr>
                         <td>{item.serialNumber} </td>
                         <td> {item.isOnline ? "true" : "false"} </td>
-                        <td> {(new Date(item.lastPowerChange)).toString()}</td></tr>
+                        <td> {(new Date(item.lastPowerChange)).toString()}</td>
+                        <td> <button type="button" > Restart</button></td></tr>
                 })
             }
         </table>
