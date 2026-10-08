@@ -15,22 +15,6 @@ class Login extends Component {
     render() {
         var j = async function(event:any) 
      {
-        var loginView = ( <div>
-                <h3>Welcome!</h3>
-                  <form id="formy" method="post" onSubmit={j} class="form-example" >
-                    <div class="form-example">
-                      <label for="name">Enter your name: </label>
-                      <input type="text" name="user" id="name" required />
-                    </div>
-                    <div class="form-example">
-                      <label for="psw">Enter your email: </label>
-                      <input type="password" name="pass" id="pass" required />
-                    </div>
-                    <div class="form-example">
-                      <input type="submit" value="Subscribe!" />
-                    </div>
-                  </form>
-            </div >);
            event.preventDefault();
             var formData = new FormData(event.target);
             const myHeaders = new Headers();
@@ -47,41 +31,35 @@ class Login extends Component {
            if ( response.ok)
              {
                var key = await response.json();
-               console.log("I am here");
-               console.log(key);
-               console.log(key.key);
-              localStorage.setItem("key", key.key);
+               localStorage.setItem("key", key.key);
              }
 
             //Fail the onsubmit to avoid page refresh.
             return false; 
         };
-        var list = ['a', 'b'];
-        // axios.get('http://10.0.0.249:5001/device/list')
         var form = (
-                  <form id="formy" method="post" onSubmit={j} class="form-example" >
-                    <div class="form-example">
-                      <label for="name">Enter your name: </label>
+                  <form id="formy" method="post" onSubmit={j} className="form-example" >
+                    <div className="form-example">
+                      <label htmlFor="name">Enter your name: </label>
                       <input type="text" name="user" id="name" required />
                     </div>
-                    <div class="form-example">
-                      <label for="psw">Enter your email: </label>
+                    <div className="form-example">
+                      <label htmlFor="psw">Enter your email: </label>
                       <input type="password" name="pass" id="pass" required />
                     </div>
-                    <div class="form-example">
+                    <div className="form-example">
                       <input type="submit" value="Subscribe!" />
                     </div>
 
                   </form>);
 
-        var logout = (<button type="button" onClick={ this.logout()}>Test</button>);
+        //var logout = (<button type="button" onClick={ this.logout()}>Test</button>);
+        //{ localStorage.getItem("key") != null ? logout : form}
         return (
             <div>
                 <h3>Welcome!</h3>
-                { localStorage.getItem("key") != null ? logout : form}
+                { form }
             </div >
-
-
         )
     }
 }

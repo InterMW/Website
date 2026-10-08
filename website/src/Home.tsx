@@ -16,6 +16,7 @@ class Home extends Component {
     }
 }
 export interface Device {
+    lastHeardFrom: string | number | Date;
     serialNumber: string;
     isOnline: boolean;
     lastPowerChange: string;
@@ -90,14 +91,14 @@ function Page() {
 
     return (
         <table>
-            <tr><th> SerialNumber </th><th> Online </th> <th> Last Power Change </th></tr>
+            <tr><th> SerialNumber </th><th> Online </th> <th> Last Heard From</th></tr>
             {
 
                 deviceList.map((item) => {
                     return <tr>
                         <td>{item.serialNumber} </td>
                         <td> {item.isOnline ? "true" : "false"} </td>
-                        <td> {(new Date(item.lastPowerChange)).toString()}</td>
+                        <td> {(new Date(item.lastHeardFrom)).toString()}</td>
                         <td> <button type="button" > Restart</button></td></tr>
                 })
             }
