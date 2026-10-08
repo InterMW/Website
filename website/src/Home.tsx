@@ -16,7 +16,7 @@ class Home extends Component {
     }
 }
 export interface Device {
-    lastHeardFrom: string | number | Date;
+    lastHeardFrom: string;
     serialNumber: string;
     isOnline: boolean;
     lastPowerChange: string;
@@ -26,7 +26,8 @@ function Page() {
     const empy: Device = {
         serialNumber: "",
         isOnline: false,
-        lastPowerChange: ""
+        lastPowerChange: "",
+        lastHeardFrom: ""
     };
     const [deviceList, setDeviceList] = useState([empy]);
 
