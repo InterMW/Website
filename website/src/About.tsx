@@ -5,7 +5,7 @@ class About extends Component {
         return (
             <div>
                 <h3>Who am I?</h3>
-                <p>  Hello, my name is Joseph Melberg.  I am a software developer by trade and hobby.</p>
+                <p>  Hello, my name is Joseph Melberg.  I am a software developer by trade and hobby.  I have been coding for most of my life, including 6 years of TIBasic experience.</p>
 
             </div>
         )
