@@ -35,7 +35,7 @@ class Login extends Component {
              }
 
             //Fail the onsubmit to avoid page refresh.
-            return false; 
+            return response.ok; 
         };
         var form = (
                   <form id="formy" method="post" onSubmit={j} className="form-example" >

@@ -19,7 +19,10 @@ export interface Device {
     lastHeardFrom: string;
     serialNumber: string;
     isOnline: boolean;
+    longitude: number;
+    latitude: number;
     lastPowerChange: string;
+    ipAddress: string;
 }
 
 function Page() {
@@ -27,8 +30,13 @@ function Page() {
         serialNumber: "",
         isOnline: false,
         lastPowerChange: "",
-        lastHeardFrom: ""
+        lastHeardFrom: "",
+        longitude: 0,
+        latitude: 0,
+        ipAddress: ""
     };
+
+
     const [deviceList, setDeviceList] = useState([empy]);
 
     async function restart(serialNumber : string){
@@ -43,13 +51,13 @@ function Page() {
             myHeaders.append("Content-Type", "application/json");
 
             
-            const response = await fetch("http://localhost:5000/device/restart/"+ serialNumber, {
+            const response = await fetch("https://api.centurionx.net/device/restart/"+ serialNumber, {
               method: "POST",
               headers: myHeaders,
             });
 
-    }
 
+    }
 
 
     useEffect(() => {
@@ -75,7 +83,6 @@ function Page() {
             var res = await response.json();
 
             console.log(res);
-            //var result = await axios.get('https://api.centurionx.net/device/list');
             
 
             //console.log(result.data);
@@ -92,15 +99,18 @@ function Page() {
 
     return (
         <table>
-            <tr><th> SerialNumber </th><th> Online </th> <th> Last Heard From</th></tr>
+            <tr><th> SerialNumber </th><th> Online </th> <th>Last Heard</th><th> Lat</th> <th> Lon </th><th>IP</th></tr> 
             {
 
                 deviceList.map((item) => {
                     return <tr>
                         <td>{item.serialNumber} </td>
                         <td> {item.isOnline ? "true" : "false"} </td>
-                        <td> {(new Date(item.lastHeardFrom)).toString()}</td>
-                        <td> <button type="button" > Restart</button></td></tr>
+                        <td> {(item.lastHeardFrom).toString()}</td>
+                        <td> {item.latitude}</td>
+                        <td> {item.longitude}</td>
+                        <td> {item.ipAddress}</td>
+                        <td> <button onClick={ () => restart(item.serialNumber)} type="button" > Restart</button></td></tr>
                 })
             }
         </table>
